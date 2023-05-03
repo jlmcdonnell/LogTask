@@ -1,0 +1,8 @@
+ext {
+    androidJunitExtVersion = "1.1.5"
+    androidKtxVersion = "1.10.0"
+    appCompatVersion = "1.6.1"
+    espressoVersion = "3.5.1"
+    junitVersion = "4.13.2"
+    materialVersion = "1.8.0"
+}
