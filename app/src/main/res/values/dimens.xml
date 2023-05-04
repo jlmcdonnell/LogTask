@@ -3,4 +3,5 @@
     <dimen name="screen_margin">16dp</dimen>
 
     <dimen name="margin_s">8dp</dimen>
+    <dimen name="margin_m">16dp</dimen>
 </resources>

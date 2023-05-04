@@ -40,5 +40,9 @@ class LogListView @JvmOverloads constructor(
         )
         result.dispatchUpdatesTo(adapter)
         adapter.items = items
+
+        if (items.isNotEmpty()) {
+            listView.scrollToPosition(items.size - 1)
+        }
     }
 }
