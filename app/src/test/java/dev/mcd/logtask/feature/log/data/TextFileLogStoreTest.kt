@@ -1,6 +1,7 @@
-package dev.mcd.logtask.feature.log.data.serializer
+package dev.mcd.logtask.feature.log.data
 
 import app.cash.turbine.test
+import dev.mcd.logtask.feature.log.data.serializer.TextFileLogStore
 import dev.mcd.logtask.feature.log.domain.LogItem
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.CoroutineDispatcher
