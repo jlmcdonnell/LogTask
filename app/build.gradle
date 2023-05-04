@@ -51,6 +51,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationVersion"
+    implementation "org.orbit-mvi:orbit-core:$orbitVersion"
+    implementation "org.orbit-mvi:orbit-viewmodel:$orbitVersion"
 
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
