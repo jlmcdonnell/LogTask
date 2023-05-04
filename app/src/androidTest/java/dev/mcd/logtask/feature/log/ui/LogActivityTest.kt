@@ -2,6 +2,8 @@ package dev.mcd.logtask.feature.log.ui
 
 import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withHint
@@ -14,6 +16,7 @@ import dev.mcd.logtask.R
 import dev.mcd.logtask.feature.log.domain.LogItem
 import dev.mcd.logtask.feature.log.domain.LogStore
 import kotlinx.coroutines.runBlocking
+import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -83,5 +86,24 @@ class LogActivityTest {
 
         onView(withText("00:00"))
             .check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun enterTextAndSubmit() {
+        // Type "Hello"
+        onView(withId(R.id.logInputText))
+            .perform(typeText("Hello"))
+
+        // Submit log
+        onView(withId(R.id.okButton))
+            .perform(click())
+
+        // Check "Hello" is displayed
+        onView(withText("Hello"))
+            .check(matches(isDisplayed()))
+
+        // Check Log input text is empty
+        onView(withId(R.id.logInputText))
+            .check(matches(withText("")))
     }
 }
