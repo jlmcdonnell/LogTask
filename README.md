@@ -5,6 +5,7 @@
 - Task implemented as per requirements below with minimal emphasis on design / UX. 
 - [Orbit MVI](https://github.com/orbit-mvi/orbit-mvi) used for ViewModel MVI implementation.
 - Jetpack Compose could be used to simplify building of UI and to remove DataBinding. To follow the requirements I have not included Compose in this project.
+- Tested on a Fairphone 4 device running Android 12, and an Android 10 emulator.
 
 ## Requirements
 
@@ -17,7 +18,6 @@
     - See `TextFileLogStore`
 - [x] Use a layout.xml file to create the view.
     - XML used for all views
-
 - [x] Use a view model to update the text with
 timestamps.
     - See `LogViewModel`
