@@ -55,6 +55,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
 
+    testImplementation "app.cash.turbine:turbine:$turbineVersion"
     testImplementation "io.kotest:kotest-assertions-core-jvm:$kotestVersion"
     testImplementation "io.kotest:kotest-assertions-core:$kotestVersion"
     testImplementation "junit:junit:$junitVersion"

@@ -11,4 +11,5 @@ ext {
     kotlinVersion = "1.8.20"
     ktlintVersion = "11.3.2"
     materialVersion = "1.8.0"
+    turbineVersion = "0.12.3"
 }
