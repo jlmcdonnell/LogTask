@@ -4,4 +4,4 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class LogFile
+annotation class ForLogStore
