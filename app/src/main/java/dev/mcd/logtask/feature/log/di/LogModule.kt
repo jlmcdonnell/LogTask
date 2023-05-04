@@ -6,9 +6,11 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.mcd.logtask.feature.log.data.UTCLogTimeProvider
 import dev.mcd.logtask.feature.log.data.serializer.TextFileLogStore
 import dev.mcd.logtask.feature.log.data.usecase.ReadLogImpl
 import dev.mcd.logtask.feature.log.domain.LogStore
+import dev.mcd.logtask.feature.log.domain.LogTimeProvider
 import dev.mcd.logtask.feature.log.domain.usecase.ReadLog
 import kotlinx.serialization.json.Json
 import java.io.File
@@ -21,6 +23,10 @@ abstract class LogModule {
     @Binds
     @Singleton
     abstract fun logStore(impl: TextFileLogStore): LogStore
+
+    @Binds
+    @Singleton
+    abstract fun logTimeProvider(impl: UTCLogTimeProvider): LogTimeProvider
 
     @Binds
     @Singleton
