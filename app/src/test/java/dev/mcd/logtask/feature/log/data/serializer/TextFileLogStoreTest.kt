@@ -1,5 +1,6 @@
 package dev.mcd.logtask.feature.log.data.serializer
 
+import app.cash.turbine.test
 import dev.mcd.logtask.feature.log.domain.LogItem
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.CoroutineDispatcher
@@ -62,6 +63,38 @@ class TextFileLogStoreTest {
 
         // Then
         store.all() shouldBe emptyList()
+    }
+
+    @Test
+    fun `Log flow updates after appending`() = runBlocking {
+        // Given
+        val store = givenLogStore()
+        val items = listOf(LogItem(OffsetDateTime.MIN, "1"))
+
+        store.allAsFlow().test {
+            // When
+            items.forEach { store.append(it) }
+
+            // Then
+            awaitItem() shouldBe items
+        }
+    }
+
+    @Test
+    fun `Log flow updates after clearing`() = runBlocking {
+        // Given
+        val store = givenLogStore()
+        val items = listOf(LogItem(OffsetDateTime.MIN, "1"))
+
+        store.allAsFlow().test {
+            // When
+            items.forEach { store.append(it) }
+            store.clear()
+
+            // Then
+            awaitItem() shouldBe items
+            awaitItem() shouldBe emptyList()
+        }
     }
 
     private fun givenLogStore(
