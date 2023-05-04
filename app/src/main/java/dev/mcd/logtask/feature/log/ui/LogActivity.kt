@@ -29,9 +29,12 @@ class LogActivity : ComponentActivity() {
             sideEffect = ::handleSideEffect,
             lifecycleOwner = this,
         )
+
+        binding.setupUI()
     }
 
     private fun render(state: State) {
+        binding.logListView.setLogItems(state.logItems)
     }
 
     private fun handleSideEffect(effect: SideEffect) {
@@ -43,5 +46,16 @@ class LogActivity : ComponentActivity() {
 
     private fun showGenericError() {
         Toast.makeText(this, R.string.generic_error, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun LogActivityBinding.setupUI() {
+        logInputView.run {
+            onOkClicked = {
+                viewModel.onOkClicked()
+            }
+            onTextChanged = { text ->
+                viewModel.onInputUpdated(text)
+            }
+        }
     }
 }

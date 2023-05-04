@@ -6,10 +6,12 @@ import dev.mcd.logtask.feature.log.domain.LogItem
 import dev.mcd.logtask.feature.log.domain.usecase.AppendLog
 import dev.mcd.logtask.feature.log.domain.usecase.ReadLog
 import dev.mcd.logtask.feature.log.ui.mapper.toUIModel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
+import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
@@ -25,6 +27,10 @@ class LogViewModel @Inject constructor(
         intent {
             readLog().map { items ->
                 items.map(LogItem::toUIModel)
+            }.collect { items ->
+                reduce {
+                    state.copy(logItems = items)
+                }
             }
         }
     }
@@ -33,7 +39,7 @@ class LogViewModel @Inject constructor(
         logInput = text
     }
 
-    fun onOkPressed() {
+    fun onOkClicked() {
         intent {
             runCatching {
                 if (logInput.isNotEmpty()) {
