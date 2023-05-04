@@ -7,6 +7,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -27,11 +31,7 @@ class TextFileLogStore @Inject constructor(
     private val dispatcher: CoroutineDispatcher,
 ) : LogStore {
 
-    private val logFlow = MutableSharedFlow<List<LogItem>>(
-        replay = 1,
-        extraBufferCapacity = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST,
-    )
+    private val logFlow = MutableSharedFlow<List<LogItem>>()
 
     override suspend fun all(): List<LogItem> {
         return withContext(dispatcher) {
@@ -42,7 +42,10 @@ class TextFileLogStore @Inject constructor(
     }
 
     override suspend fun allAsFlow(): Flow<List<LogItem>> {
-        return logFlow
+        return flow {
+            emit(all())
+            emitAll(logFlow)
+        }
     }
 
     override suspend fun append(item: LogItem) {

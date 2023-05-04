@@ -74,6 +74,7 @@ class TextFileLogStoreTest {
 
         store.allAsFlow().test {
             // When
+            awaitItem() shouldBe emptyList()
             items.forEach { store.append(it) }
 
             // Then
@@ -90,11 +91,26 @@ class TextFileLogStoreTest {
         store.allAsFlow().test {
             // When
             items.forEach { store.append(it) }
+            awaitItem() shouldBe emptyList()
+            awaitItem() shouldBe items
             store.clear()
 
             // Then
-            awaitItem() shouldBe items
             awaitItem() shouldBe emptyList()
+        }
+    }
+
+    @Test
+    fun `Calling Log flow emits initial state`() = runBlocking {
+        // Given
+        val store = givenLogStore()
+        val items = listOf(LogItem(OffsetDateTime.MIN, "1"))
+        items.forEach { store.append(it) }
+
+        // When
+        store.allAsFlow().test {
+            // Then
+            awaitItem() shouldBe items
         }
     }
 
