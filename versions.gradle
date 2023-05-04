@@ -1,8 +1,11 @@
 ext {
+    androidGradlePluginVersion = "8.0.1"
     androidJunitExtVersion = "1.1.5"
     androidKtxVersion = "1.10.0"
     appCompatVersion = "1.6.1"
     espressoVersion = "3.5.1"
     junitVersion = "4.13.2"
+    kotlinVersion = "1.8.20"
+    ktlintVersion = "11.3.2"
     materialVersion = "1.8.0"
 }
