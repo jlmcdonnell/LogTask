@@ -1,8 +1,9 @@
-package dev.mcd.logtask.feature.log.domain.usecase
+package dev.mcd.logtask.feature.log.data.usecase
 
 import dev.mcd.logtask.feature.log.domain.LogItem
 import dev.mcd.logtask.feature.log.domain.LogStore
 import dev.mcd.logtask.feature.log.domain.LogTimeProvider
+import dev.mcd.logtask.feature.log.domain.usecase.AppendLog
 import javax.inject.Inject
 
 class AppendLogImpl @Inject constructor(

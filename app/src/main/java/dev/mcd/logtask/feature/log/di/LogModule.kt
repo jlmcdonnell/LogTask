@@ -13,7 +13,7 @@ import dev.mcd.logtask.feature.log.data.usecase.ReadLogImpl
 import dev.mcd.logtask.feature.log.domain.LogStore
 import dev.mcd.logtask.feature.log.domain.LogTimeProvider
 import dev.mcd.logtask.feature.log.domain.usecase.AppendLog
-import dev.mcd.logtask.feature.log.domain.usecase.AppendLogImpl
+import dev.mcd.logtask.feature.log.data.usecase.AppendLogImpl
 import dev.mcd.logtask.feature.log.domain.usecase.ReadLog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.serialization.json.Json

@@ -1,5 +1,6 @@
 package dev.mcd.logtask.feature.log.domain.usecase
 
+import dev.mcd.logtask.feature.log.data.usecase.AppendLogImpl
 import dev.mcd.logtask.feature.log.domain.LogTimeProvider
 import dev.mcd.logtask.test.TestWriteLogStore
 import io.kotest.matchers.shouldBe
