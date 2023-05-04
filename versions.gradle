@@ -5,6 +5,7 @@ ext {
     appCompatVersion = "1.6.1"
     espressoVersion = "3.5.1"
     junitVersion = "4.13.2"
+    kotestVersion = "5.6.1"
     kotlinVersion = "1.8.20"
     ktlintVersion = "11.3.2"
     materialVersion = "1.8.0"

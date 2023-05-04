@@ -45,6 +45,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     testImplementation "junit:junit:$junitVersion"
+    testImplementation "io.kotest:kotest-assertions-core-jvm:$kotestVersion"
+    testImplementation "io.kotest:kotest-assertions-core:$kotestVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidJunitExtVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
