@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Log Task</string>
+    <string name="ok">OK</string>
+    <string name="hint_enter_text">Enter text</string>
 </resources>
