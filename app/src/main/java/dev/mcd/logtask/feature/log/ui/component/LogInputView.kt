@@ -1,8 +1,9 @@
-package dev.mcd.logtask
+package dev.mcd.logtask.feature.log.ui.component
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
+import dev.mcd.logtask.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 
