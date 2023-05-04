@@ -17,7 +17,14 @@ class OffsetDateTimeMapperTest {
 
         // Then
         val expected = OffsetDateTime.of(
-            2023, 5, 4, 9, 29, 57, 123456789, ZoneOffset.UTC,
+            2023,
+            5,
+            4,
+            9,
+            29,
+            57,
+            123456789,
+            ZoneOffset.UTC,
         )
 
         actual shouldBe expected
@@ -26,7 +33,16 @@ class OffsetDateTimeMapperTest {
     @Test
     fun `Serialize offset date time`() {
         // Given
-        val dateTime = OffsetDateTime.of(2023, 5, 4, 9, 40, 15, 123456789, ZoneOffset.UTC)
+        val dateTime = OffsetDateTime.of(
+            2023,
+            5,
+            4,
+            9,
+            40,
+            15,
+            123456789,
+            ZoneOffset.UTC,
+        )
 
         // When
         val actual = OffsetDateTimeMapper.serialize(dateTime)
@@ -36,5 +52,4 @@ class OffsetDateTimeMapperTest {
 
         actual shouldBe expected
     }
-
 }
