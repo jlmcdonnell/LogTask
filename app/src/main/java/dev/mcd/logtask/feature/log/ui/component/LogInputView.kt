@@ -20,4 +20,6 @@ class LogInputView @JvmOverloads constructor(
     fun readLinesAsFlow(): Flow<String> {
         return emptyFlow()
     }
+
+    fun clear() { throw NotImplementedError() }
 }
