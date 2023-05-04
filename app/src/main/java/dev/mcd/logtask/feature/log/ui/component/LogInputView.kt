@@ -30,6 +30,11 @@ class LogInputView @JvmOverloads constructor(
         okButton.setOnClickListener {
             onOkClicked?.invoke()
         }
+
+        inputText.setOnEditorActionListener { _, _, _ ->
+            onOkClicked?.invoke()
+            true
+        }
     }
 
     fun clear() {

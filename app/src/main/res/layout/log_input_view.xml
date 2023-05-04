@@ -13,6 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_s"
         android:hint="@string/hint_enter_text"
+        android:imeOptions="actionSend"
+        android:lines="1"
+        android:singleLine="true"
         app:layout_constraintEnd_toStartOf="@id/okButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
