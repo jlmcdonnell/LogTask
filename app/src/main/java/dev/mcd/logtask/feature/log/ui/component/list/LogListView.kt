@@ -1,9 +1,9 @@
 package dev.mcd.logtask.feature.log.ui.component.list
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import dev.mcd.logtask.R
 import dev.mcd.logtask.feature.log.ui.LogItemUIModel
@@ -22,12 +22,23 @@ class LogListView @JvmOverloads constructor(
         listView.adapter = adapter
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setLogItems(items: List<LogItemUIModel>) {
-        if (adapter.items != items) {
-            // For purpose of task and time constraints, will not use item diffing here
-            adapter.items = items
-            adapter.notifyDataSetChanged()
-        }
+        val result = DiffUtil.calculateDiff(
+            object : DiffUtil.Callback() {
+                override fun getOldListSize() = adapter.itemCount
+
+                override fun getNewListSize() = items.size
+
+                override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                    return adapter.items[oldItemPosition] == items[newItemPosition]
+                }
+
+                override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                    return areItemsTheSame(oldItemPosition, newItemPosition)
+                }
+            },
+        )
+        result.dispatchUpdatesTo(adapter)
+        adapter.items = items
     }
 }

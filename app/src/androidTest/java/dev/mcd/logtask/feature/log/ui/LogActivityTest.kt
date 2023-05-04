@@ -14,6 +14,7 @@ import dev.mcd.logtask.R
 import dev.mcd.logtask.feature.log.domain.LogItem
 import dev.mcd.logtask.feature.log.domain.LogStore
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -36,6 +37,13 @@ class LogActivityTest {
     fun init() {
         hiltRule.inject()
 
+        runBlocking {
+            logStore.clear()
+        }
+    }
+
+    @After
+    fun tearDown() {
         runBlocking {
             logStore.clear()
         }
