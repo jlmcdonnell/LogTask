@@ -2,6 +2,7 @@ ext {
     androidGradlePluginVersion = "8.0.1"
     androidJunitExtVersion = "1.1.5"
     androidKtxVersion = "1.10.0"
+    androidFragmentKtxVersion = "1.5.7"
     appCompatVersion = "1.6.1"
     espressoVersion = "3.5.1"
     hiltVersion = "2.46"

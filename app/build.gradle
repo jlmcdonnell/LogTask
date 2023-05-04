@@ -48,6 +48,7 @@ kapt {
 
 dependencies {
     implementation "androidx.core:core-ktx:$androidKtxVersion"
+    implementation "androidx.fragment:fragment-ktx:$androidFragmentKtxVersion"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationVersion"
